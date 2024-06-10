@@ -1,4 +1,4 @@
-import os
+'''import os
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -30,3 +30,4 @@ def get_response(user_input):
     # Decode the generated response
     response = tokenizer.decode(outputs[0], skip_special_tokens=True)
     return response
+    '''

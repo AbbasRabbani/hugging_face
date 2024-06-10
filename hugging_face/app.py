@@ -1,7 +1,7 @@
 #from flask import Flask, jsonify, render_template, request
-
-from fastapi import FastAPI, HTTPException, Request
-from pydantic import BaseModel
+'''
+### from fastapi import FastAPI, HTTPException, Request
+"""from pydantic import BaseModel
 
 from model import get_response
 
@@ -10,7 +10,7 @@ from model import get_response
 app = FastAPI()
 
 #### "" @app.route('/')
-"""def home():
+" def home():
     return render_template('index.html')
 
 @app.route('/predict', methods=['POST'])
@@ -23,16 +23,16 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5010, debug=True) """
 
 
-class Message(BaseModel):
-    message: str
-
-@app.get("/")
-async def read_root():
-    return {"message": "Welcome to the Simple Chatbot API"}
-
+"class Message(BaseModel):
+# message: str
+""
+"@app.get("/")
+"async def read_root():
+   # return {"message": "Welcome to the Simple Chatbot API"} 
+""""
 @app.post("/predict")
 async def predict(message: Message):
     response = get_response(message.message)
-    return {"response": response}
+    return {"response": response} "
 
-
+    '''

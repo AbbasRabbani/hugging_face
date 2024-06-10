@@ -7,6 +7,7 @@ WORKDIR /app
 # Copy the current directory contents into the container at /app
 COPY . /app
 
+# Copy the requirements file
 COPY requirements.txt .
 
 # Update the package list and install system dependencies
@@ -21,9 +22,12 @@ ENV HF_TOKEN=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
 # Install any needed packages specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Make port 5000 available to the world outside this container
-EXPOSE 5010
+# Accept a build argument for the port
+ARG PORT
 
-# Run app.py when the container launches
-#CMD ["python", "app.py"]
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "5010"]
+# Expose the port the app will run on
+EXPOSE ${PORT}
+
+# Command to run the application with the specified port
+CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT}"]
+
